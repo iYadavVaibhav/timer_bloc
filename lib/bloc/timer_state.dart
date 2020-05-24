@@ -7,6 +7,7 @@ import 'package:equatable/equatable.dart';
 // Finished — completed with a remaining duration of 0.
 
 // abstract class having only signatures.
+// Has one property duration_left, because in every state this data is required
 abstract class TimerState extends Equatable {
   final int duration;
 

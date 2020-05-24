@@ -1,16 +1,36 @@
 # timer_bloc
 
-A new Flutter project.
+A new Flutter project to demonstrate use of BLoC pattern. In this we followed following steps:
+1. Created data provider class, Ticker
+2. TimerState - Ready, Running, Paused, Finished. Class has `int duration`.
+3. TimerEvent - Start, Pause, Resume, Reset, Tick. Class has `int duration`.
+4. TimerBloc - Uses above two, sets `initialState` and `mapEventToState()`.
+   - Here we also created `StreamSubscription` for tickerSubscription. 
+     - this has `pause()` and `resume()` functions.
+   - Used, `close()` to cancel the subscription.
+5. Exported all these classes to `bloc.dart`.
+6. UI - main.dart - we created, `home: BlocProvider()` to manage initializing and closing an instance of TimerBloc.
+7. Then, `BlocBuilder<TimerBloc, TimerState>()` to show timer.
+8. Then, added floating action buttons based on state.
+9. Then, wrapped it in stack and added `wave` background widget.
 
-## Getting Started
+Screenshots:
+<img src='images/img1.png' width='100%'> | ![Screenshot 2](images/img2.png "Screenshot 2")
+:-:|:-:
+Initial State|Timer Started
 
-This project is a starting point for a Flutter application.
+App Structure:
+- lib
+  - bloc
+    - bloc.dart
+    - timer_bloc.dart
+    - timer_event.dart
+    - timer_state.dart
+  - resources
+    - repository
+      - ticker.dart
+  - main.dart
 
-A few resources to get you started if this is your first Flutter project:
+This project was based on Bloc [tutorial](https://bloclibrary.dev/#/fluttertimertutorial?id=ticker) by @felangel.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Thank you!
